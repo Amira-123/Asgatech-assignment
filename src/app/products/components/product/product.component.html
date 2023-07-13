@@ -1,0 +1,16 @@
+<div class="products mb-4" [ngClass]="{'few-quantities': data.AvailablePieces <= 5}">
+   <div class="">
+    <div class="image p-1">
+      <img src="{{ data.ProductImg }}" class="img-fluid" alt="{{data.ProductName }}"/>
+    </div>
+    <div class="body">
+      <h4>{{ data.ProductName }}</h4>
+     
+      <span>{{ data.ProductPrice }} L.E</span>
+    </div>
+  </div>
+
+  <div class="">
+    <button class="btn addBtn" (click)="addItem()">Add</button>
+  </div>
+</div>
