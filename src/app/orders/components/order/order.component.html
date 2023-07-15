@@ -1,7 +1,4 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
   <!-- OrderId Column -->
   <ng-container matColumnDef="OrderId">
     <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -35,7 +32,7 @@
   <tr
     mat-row
     *matRowDef="let row; columns: displayedColumns"
-    routerLink="/{{ row.OrderId }}"
+    routerLink="/order/{{ row.OrderId }}"
   ></tr>
   <!-- [routerLink]="['/order', row.OrderId]" -->
 </table>

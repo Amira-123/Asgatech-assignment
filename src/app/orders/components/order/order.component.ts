@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService, private route: Router) {}
+
   dataSource = this.orderService.orderList$;
 
   ngOnInit(): void {}

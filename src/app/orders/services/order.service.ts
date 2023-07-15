@@ -24,15 +24,10 @@ export class OrderService {
 
   orderList$: Observable<Order[]> = this.orderList.asObservable();
 
-  getOrderById(orderId: number) {
-    // TODO: Find the order by id
+  getOrderById(orderId: number): Observable<Order | undefined> {
     return this.orderList$.pipe(
       map((res: Order[]) => {
         return res.find((order: Order) => order?.OrderId == orderId);
-        // console.log(res);
-      }),
-      tap((res) => {
-        // console.log(res);
       })
     );
   }

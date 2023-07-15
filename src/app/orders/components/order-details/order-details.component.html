@@ -1,1 +1,71 @@
-<p>order-details works!</p>
+<section *ngIf="orderDetails$ | async as orderDetails" class="pt-3">
+  <div class="row">
+    <div class="col-xl-4 col-md-6 order-details">
+      <div class="m-2 box p-3">
+        <h2>Order Details</h2>
+        <p>
+          Order Id :<span> {{ orderDetails?.OrderId }}</span>
+        </p>
+        <p>
+          Product Count :<span> {{ orderDetails?.Products?.length }}</span>
+        </p>
+        <p>
+          Payment Type :<span> {{ orderDetails?.PaymentType }}</span>
+        </p>
+        <p>
+          Order Date :<span>
+            {{ orderDetails?.OrderDate | date : "dd-MM-YYYY h:mm a" }}</span
+          >
+        </p>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 product-details">
+      <div class="box m-2 p-3">
+        <h2>Products</h2>
+        <div *ngFor="let product of orderDetails?.Products">
+          <div class="details d-flex">
+            <img
+              [src]="product.ProductImg"
+              alt="{{ product.ProductName }}"
+              class="img-fluid m-2"
+            />
+            <div class="d-flex justify-content-between align-items-center w-75">
+              <p>{{ product.ProductName }}</p>
+              <p class="text-danger">{{ product.ProductPrice }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 customer-details">
+      <div class="m-2 box p-3">
+        <h2>Customer Details</h2>
+
+        <h3 class="text-center">{{ orderDetails?.User?.Name }}</h3>
+        <p class="bg-light rounded-2 p-2">
+          total Price:{{
+            orderDetails.Products | totalPrice | number : "1.2-2"
+          }}
+        </p>
+        <p>
+          Phone:<span> {{ orderDetails?.User?.Phone }}</span>
+        </p>
+        <p>
+          Email :<span> {{ orderDetails?.User?.Email }}</span>
+        </p>
+        <p>
+          Address:<span>
+            {{ orderDetails?.User?.Address | slice : 1 : 20 }} ...</span
+          >
+        </p>
+        <p>
+          RegisterDate :<span>
+            {{
+              orderDetails?.User?.RegisterDate | date : "dd-MM-YYYY h:mm a"
+            }}</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
