@@ -24,7 +24,7 @@
   <ng-container matColumnDef="TotalPrice">
     <th mat-header-cell *matHeaderCellDef>TotalPrice</th>
     <td mat-cell *matCellDef="let element">
-      ${{ element.Products | totalPrice | number : "1.2-2" }}
+      {{ element.Products | totalPrice | number : "1.2-2" }} LE
     </td>
   </ng-container>
 
@@ -33,6 +33,6 @@
     mat-row
     *matRowDef="let row; columns: displayedColumns"
     routerLink="/order/{{ row.OrderId }}"
+    style="cursor: pointer"
   ></tr>
-  <!-- [routerLink]="['/order', row.OrderId]" -->
 </table>

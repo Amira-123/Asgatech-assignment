@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../utils/Products';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-product',
@@ -14,11 +15,22 @@ export class ProductComponent {
 
   @Output() onEditProduct = new EventEmitter<Product>();
 
+  @Output() onAddProduct = new EventEmitter<Product>();
+
+  addButton: boolean = false;
+
   quantity: FormControl<number | null> = this._fb.control(null);
+
+  amount: FormControl<number | null> = this._fb.control(1);
 
   showEditInput: boolean = false;
 
-  addItem() {}
+  addProduct(prod: Product) {
+    this.onAddProduct.emit({
+      ...this.data,
+      Quantity: this.amount.value as number,
+    });
+  }
 
   onShowEdit(prod: Product): void {
     this.quantity.patchValue(prod.AvailablePieces);
@@ -33,8 +45,5 @@ export class ProductComponent {
 
     this.onEditProduct.emit(updateProduct);
     this.showEditInput = false;
-    // TODO: create new object from product with new quantity
-    // TODO: send this created object to the parent
-    // TODO: Hide edit form
   }
 }

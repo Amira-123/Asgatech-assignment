@@ -33,8 +33,7 @@ export class OrderService {
   }
 
   createOrder(order: Order): void {
-    // TODO: After collecting the order details
-    // TODO: Just update orderList
+    this.orderList.next([order, ...this.orderList.getValue()]);
   }
 
   getAllOrders() {

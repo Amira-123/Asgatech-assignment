@@ -42,8 +42,8 @@
         <h2>Customer Details</h2>
 
         <h3 class="text-center">{{ orderDetails?.User?.Name }}</h3>
-        <p class="bg-light rounded-2 p-2">
-          total Price:{{
+        <p class="bg-light rounded-2 py-3">
+          Total Price:{{
             orderDetails.Products | totalPrice | number : "1.2-2"
           }}
         </p>

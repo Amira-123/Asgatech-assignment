@@ -1,0 +1,27 @@
+.active{
+    background-color: #3CB7AE;
+    border-radius: 5px;
+    color:#fff !important;
+}
+.navbar-brand{
+    font-size: 25px !important;
+   
+    font-weight: 500;
+}
+.cart {
+    a{
+        cursor: pointer;
+    }
+    span {
+      margin-top:-20px;
+      background-color: #333;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      color: #fff;
+    }
+    i{
+      color:#3CB7AE;
+      cursor: pointer;
+    }
+  }

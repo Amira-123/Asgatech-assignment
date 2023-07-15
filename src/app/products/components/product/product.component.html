@@ -5,7 +5,7 @@
   <div class="">
     <div class="image p-1">
       <img
-        src="{{ data.ProductImg }}"
+        [src]="data.ProductImg"
         class="img-fluid"
         alt="{{ data.ProductName }}"
       />
@@ -18,13 +18,28 @@
 
   <div class="">
     <button
-      *ngIf="data.AvailablePieces > 5"
-      class="btn addBtn"
-      (click)="addItem()"
+      class="btn addBtn w-100"
+      *ngIf="!addButton && data.AvailablePieces > 5"
+      (click)="addButton = true"
     >
-      Add
+      Add To Cart
+      <i class="fa-solid fa-cart-shopping"></i>
     </button>
-
+    <div class="d-flex justify-content-end" *ngIf="addButton">
+      <input
+        [formControl]="amount"
+        [max]="data.AvailablePieces"
+        min="1"
+        type="number"
+        class="form-control"
+      />
+      <button
+        class="btn addBtn mx-1"
+        (click)="addProduct(data); addButton = false"
+      >
+        Add
+      </button>
+    </div>
     <div *ngIf="showEditInput" class="mb-3">
       <input
         [formControl]="quantity"

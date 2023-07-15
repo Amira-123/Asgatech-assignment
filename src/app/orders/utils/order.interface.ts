@@ -6,7 +6,7 @@ export interface Order {
   OrderId: number;
   PaymentType: string;
   UserId: string;
-  Products: (Product & { Quantity: number })[];
+  Products: Product[];
   TotalPrice?: number | undefined;
   User?: User | undefined;
 }

@@ -25,7 +25,6 @@ export class ProductService {
   }
 
   updateProduct(prod: Product): void {
-    // TODO: loop trow productList subject value and find selected product
     const productList: Product[] = this.productList
       .getValue()
       .map((product) => {
@@ -35,7 +34,6 @@ export class ProductService {
         return product;
       });
 
-    // TODO: set the list again
     this.productList.next(productList);
   }
 

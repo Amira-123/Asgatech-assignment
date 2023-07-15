@@ -9,18 +9,21 @@
     transform: translateY(-5px);
     box-shadow: 0px 5px 5px rgba(173, 173, 178, 0.5);
   }
-  
+  input:focus {
+    outline: 0;
+    box-shadow: none;
+  }
   .image {
     text-align: center;
     img {
       height: 150px;
     }
   }
-  
+
   .body {
     h4 {
       font-weight: 500;
-       margin:0;
+      margin: 0;
     }
     p {
       color: #adabab;
@@ -29,20 +32,19 @@
 
   span {
     font-size: 20px;
-    
   }
 
   button {
     width: 98%;
 
     &.edit {
-      background-color: blue !important;
+      background-color: #adabab !important;
       color: #ffffff;
     }
   }
 
   .addBtn {
-    background-color: #ef6c00;
+    background-color: #5e8b88;
     color: #fff;
     font-weight: 500;
     i {
@@ -54,7 +56,6 @@
   border: 2px solid red;
 }
 
-
-.quantity{
+.quantity {
   width: 98%;
 }

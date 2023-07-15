@@ -5,4 +5,5 @@ export interface Product {
   AvailablePieces: number;
   ProductImg: string;
   selected?: boolean;
+  Quantity?: number;
 }
