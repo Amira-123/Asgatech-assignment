@@ -97,6 +97,10 @@ export class CartListComponent implements OnInit {
       this.toaster.success('Order create successfully.');
 
       this.clearAllCart();
+    } else {
+      this.toaster.warning(
+        'Cart should not be empty, try to add a product first and try again.'
+      );
     }
   }
 }
