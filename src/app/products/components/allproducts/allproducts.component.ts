@@ -6,27 +6,21 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-allproducts',
   templateUrl: './allproducts.component.html',
-  styleUrls: ['./allproducts.component.scss']
+  styleUrls: ['./allproducts.component.scss'],
 })
-export class AllproductsComponent  implements OnInit{
-  constructor(private productService:ProductService){
-   
-  }
+export class AllproductsComponent implements OnInit {
+  constructor(private productService: ProductService) {}
+
+  allProducts$: Observable<Product[]> = this.productService.productList$;
+
   ngOnInit(): void {
     // this.getAllProducts()
   }
-  allProducts$=this.productService.getAllProducts()
-  // getAllProducts(){
-  //   this.productService.getAllProducts().subscribe({
-  //     next:(res:any)=>{
-  //       this.allProducts=res;
-  //       console.log(res)
-  //       console.log(this.allProducts)
-  //     }
-  //   })
-  // }
-  addToCart(event:any){
 
+  addToCart(event: any) {}
+
+  updateProduct(product: Product): void {
+    this.productService.updateProduct(product);
+    // TODO: send the updated prod form product childe to update product in the service
   }
 }
-
