@@ -68,33 +68,35 @@ export class CartListComponent implements OnInit {
   }
 
   onCreateOrder() {
-    const order: Order = {
-      OrderDate: new Date(),
-      OrderId: parseInt(
-        `${new Date().getSeconds()}${Math.floor(Math.random() * 10000)}`
-      ),
-      PaymentType: 'Online',
-      UserId: '1231-1244-1233',
-      User: {
-        Id: '1231-1244-1233',
-        Name: 'Mohamed Ashraf',
-        Email: 'Mohamed.Ashraf@Gmail.com',
-        Phone: '01144558866',
-        Address:
-          '55 Mohammed Mostafa El Sayed, An Nadi Al Ahli, Nasr City, Cairo Governorate',
-        RegisterDate:
-          'Wed Sep 18 2019 12:35:14 GMT+0200 (Eastern European Standard Time)',
-      },
-      TotalPrice: this.total,
-      Products: [...this.cartProduct],
-    };
+    if (this.cartProduct.length) {
+      const order: Order = {
+        OrderDate: new Date(),
+        OrderId: parseInt(
+          `${new Date().getSeconds()}${Math.floor(Math.random() * 10000)}`
+        ),
+        PaymentType: 'Online',
+        UserId: '1231-1244-1233',
+        User: {
+          Id: '1231-1244-1233',
+          Name: 'Mohamed Ashraf',
+          Email: 'Mohamed.Ashraf@Gmail.com',
+          Phone: '01144558866',
+          Address:
+            '55 Mohammed Mostafa El Sayed, An Nadi Al Ahli, Nasr City, Cairo Governorate',
+          RegisterDate:
+            'Wed Sep 18 2019 12:35:14 GMT+0200 (Eastern European Standard Time)',
+        },
+        TotalPrice: this.total,
+        Products: [...this.cartProduct],
+      };
 
-    this.orderService.createOrder({ ...order });
+      this.orderService.createOrder({ ...order });
 
-    this.router.navigate(['/order/', order.OrderId]);
+      this.router.navigate(['/order/', order.OrderId]);
 
-    this.toaster.success('Order create successfully.');
+      this.toaster.success('Order create successfully.');
 
-    this.clearAllCart();
+      this.clearAllCart();
+    }
   }
 }
