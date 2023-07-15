@@ -1,27 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
-import { IOrderVm } from '../../utils/order.interface';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+  styleUrls: ['./order.component.scss'],
 })
-export class OrderComponent implements OnInit{
-  constructor(private orderService:OrderService){}
-  ngOnInit(): void {
-   this.getAllOrders()
-  }
-  dataSource:any
-  displayedColumns: string[] = ['OrderId', 'PaymentType', 'OrderDate','TotalPrice'];
+export class OrderComponent implements OnInit {
+  constructor(private orderService: OrderService, private route: Router) {}
+  dataSource = this.orderService.orderList$;
 
-  
-  getAllOrders(){
-    this.orderService.getAllOrders().subscribe({
-      next:(res:any)=>{
-        this.dataSource=res
-      }
-    })
-  }
+  ngOnInit(): void {}
+
+  displayedColumns: string[] = [
+    'OrderId',
+    'PaymentType',
+    'OrderDate',
+    'TotalPrice',
+  ];
 }

@@ -1,16 +1,53 @@
-<div class="products mb-4" [ngClass]="{'few-quantities': data.AvailablePieces <= 5}">
-   <div class="">
+<div
+  class="products mb-4 mat-elevation-z1"
+  [ngClass]="{ 'few-quantities': data.AvailablePieces <= 5 }"
+>
+  <div class="">
     <div class="image p-1">
-      <img src="{{ data.ProductImg }}" class="img-fluid" alt="{{data.ProductName }}"/>
+      <img
+        src="{{ data.ProductImg }}"
+        class="img-fluid"
+        alt="{{ data.ProductName }}"
+      />
     </div>
-    <div class="body">
+    <div class="body text-center">
       <h4>{{ data.ProductName }}</h4>
-     
       <span>{{ data.ProductPrice }} L.E</span>
     </div>
   </div>
 
   <div class="">
-    <button class="btn addBtn" (click)="addItem()">Add</button>
+    <button
+      *ngIf="data.AvailablePieces > 5"
+      class="btn addBtn"
+      (click)="addItem()"
+    >
+      Add
+    </button>
+
+    <div *ngIf="showEditInput" class="mb-3">
+      <input
+        [formControl]="quantity"
+        type="number"
+        class="form-control"
+        id="quantity"
+        min="0"
+        placeholder="Quantity"
+      />
+      <div class="d-flex">
+        <button class="btn btn-danger m-1" (click)="showEditInput = false">
+          cancel
+        </button>
+        <button class="btn btn-success m-1" (click)="onEditProd()">save</button>
+      </div>
+    </div>
+
+    <button
+      *ngIf="data.AvailablePieces <= 5 && !showEditInput"
+      class="btn addBtn edit"
+      (click)="onShowEdit(data)"
+    >
+      Edit quantity
+    </button>
   </div>
 </div>
